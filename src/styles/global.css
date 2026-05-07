@@ -1,0 +1,73 @@
+/* ===========================
+   STOCKBRIDGE — Design Tokens
+   =========================== */
+
+:root {
+  /* Colors */
+  --color-brown: #A2845E;
+  --color-sage: #A1CE9E;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-bg: #FFFFFF;
+  --color-pink: #E8A0BF;
+
+  /* Typography */
+  --font-mono: 'ABC Diatype Mono Edu', 'SF Mono', 'Courier New', monospace;
+  --font-display: 'ABC Monument Grotesk Mono', 'SF Mono', monospace;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+
+  /* Layout */
+  --nav-width: 220px;
+  --content-max: 1512px;
+}
+
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-black);
+  background: var(--color-bg);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}

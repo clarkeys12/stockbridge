@@ -1,0 +1,36 @@
+.shipping-banner {
+  position: relative;
+  background: var(--color-brown);
+  overflow: hidden;
+  padding: 8px 0;
+  white-space: nowrap;
+}
+
+.shipping-banner__track {
+  display: inline-flex;
+  gap: 80px;
+  animation: marquee 20s linear infinite;
+}
+
+.shipping-banner__track span {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--color-white);
+  letter-spacing: 0.04em;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .shipping-banner {
+    padding: 6px 0;
+  }
+
+  .shipping-banner__track span {
+    font-size: 11px;
+  }
+}

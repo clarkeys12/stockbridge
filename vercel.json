@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/((?!assets|images|icons\\.svg|logo\\.svg|favicon\\.svg|hero\\.mp4|hero\\.mov|slogo\\.png|stockbridge_logo\\.png).*)", "destination": "/index.html" }
+  ]
+}
