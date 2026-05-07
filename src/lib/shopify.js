@@ -93,6 +93,7 @@ export async function fetchProductByHandle(handle) {
           node {
             id
             title
+            availableForSale
             price {
               amount
               currencyCode

@@ -179,15 +179,31 @@ export default function ProductPage() {
               <div className="product-page__size-row">
                 <span className="product-page__option-label">Size</span>
                 <div className="product-page__sizes">
-                  {product.sizes.map((size) => (
-                    <button
-                      key={size}
-                      className={`product-page__size ${selectedSize === size ? 'is-active' : ''}`}
-                      onClick={() => setSelectedSize(size)}
-                    >
-                      {size}
-                    </button>
-                  ))}
+                  {product.sizes.map((size) => {
+                    const selectedColorName = product.colors[selectedColor]?.name;
+                    const sizeAvailable = product.variants.some((v) => {
+                      const opts = v.selectedOptions || [];
+                      const sizeMatch = opts.find(
+                        (o) => o.name.toLowerCase() === 'size' && o.value === size
+                      );
+                      const colorMatch =
+                        !selectedColorName ||
+                        opts.find(
+                          (o) => o.name.toLowerCase() === 'color' && o.value === selectedColorName
+                        );
+                      return sizeMatch && colorMatch && v.availableForSale;
+                    });
+                    return (
+                      <button
+                        key={size}
+                        className={`product-page__size ${selectedSize === size ? 'is-active' : ''} ${!sizeAvailable ? 'is-sold-out' : ''}`}
+                        onClick={() => sizeAvailable && setSelectedSize(size)}
+                        disabled={!sizeAvailable}
+                      >
+                        {size}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             )}

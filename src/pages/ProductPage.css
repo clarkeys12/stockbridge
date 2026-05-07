@@ -193,6 +193,23 @@
   padding: 0;
 }
 
+.product-page__size.is-sold-out {
+  opacity: 0.35;
+  cursor: default;
+  position: relative;
+}
+
+.product-page__size.is-sold-out::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  right: 2px;
+  height: 1px;
+  background: var(--color-black);
+  transform: rotate(-45deg);
+}
+
 .product-page__size.is-active {
   background: var(--color-pink);
   border-color: var(--color-pink);

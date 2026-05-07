@@ -39,13 +39,6 @@ export default function GarmentCarePage() {
         </p>
       </section>
 
-      <section className="content-page__section">
-        <h2 className="content-page__heading">Repairs</h2>
-        <p className="content-page__text">
-          We believe in repairing, not replacing. If your garment needs mending,
-          reach out to us. We offer repair services for all Stockbridge pieces.
-        </p>
-      </section>
     </div>
   );
 }
