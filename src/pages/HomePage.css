@@ -79,6 +79,10 @@
     height: calc(100vh - 52px);
   }
 
+  .home-page__img {
+    object-position: center 40%;
+  }
+
   .home-page__overlay {
     padding-bottom: 40px;
   }
