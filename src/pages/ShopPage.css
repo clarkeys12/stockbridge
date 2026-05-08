@@ -15,8 +15,6 @@
   text-align: center;
 }
 
-/* ---- Toolbar ---- */
-
 .shop-page__toolbar {
   display: flex;
   justify-content: space-between;
@@ -71,15 +69,11 @@
   padding-right: 28px;
 }
 
-/* ---- Product Grid ---- */
-
 .shop-page__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-lg) var(--space-md);
 }
-
-/* ---- Product Card ---- */
 
 .shop-page__card {
   display: block;
@@ -121,8 +115,6 @@
   opacity: 0;
 }
 
-/* ---- Info Row ---- */
-
 .shop-page__info {
   display: flex;
   justify-content: space-between;
@@ -143,8 +135,6 @@
   opacity: 0.7;
 }
 
-/* ---- Color Swatches ---- */
-
 .shop-page__colors {
   display: flex;
   gap: 6px;
@@ -156,8 +146,6 @@
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
-
-/* ---- Mobile ---- */
 
 @media (max-width: 768px) {
   .shop-page {

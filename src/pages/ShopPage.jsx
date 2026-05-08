@@ -24,7 +24,6 @@ export default function ShopPage() {
     fetchProducts();
   }, []);
 
-  // Use Shopify products if available, fall back to local data
   const displayProducts = shopifyProducts
     ? shopifyProducts.map((p) => ({
         slug: p.handle,
@@ -39,23 +38,16 @@ export default function ShopPage() {
       }))
     : products;
 
-  // Build filter options from product types
   const productTypes = ['All', ...new Set(
-    displayProducts
-      .map((p) => p.productType)
-      .filter(Boolean)
+    displayProducts.map((p) => p.productType).filter(Boolean)
   )];
 
-  // Filter
   let filtered = activeFilter === 'All'
     ? displayProducts
     : displayProducts.filter((p) => p.productType === activeFilter);
 
-  // Sort
   if (sortBy === 'newest') {
-    filtered = [...filtered].sort((a, b) =>
-      new Date(b.createdAt) - new Date(a.createdAt)
-    );
+    filtered = [...filtered].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   } else if (sortBy === 'price-low') {
     filtered = [...filtered].sort((a, b) => Number(a.price) - Number(b.price));
   } else if (sortBy === 'price-high') {
@@ -72,7 +64,6 @@ export default function ShopPage() {
 
   return (
     <div className="shop-page">
-      {/* Filter + Sort Bar */}
       <div className="shop-page__toolbar">
         <div className="shop-page__filters">
           {productTypes.map((type) => (
@@ -91,8 +82,8 @@ export default function ShopPage() {
           onChange={(e) => setSortBy(e.target.value)}
         >
           <option value="newest">Newest</option>
-          <option value="price-low">Price: Low → High</option>
-          <option value="price-high">Price: High → Low</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
         </select>
       </div>
 
@@ -139,7 +130,6 @@ export default function ShopPage() {
   );
 }
 
-/* Map common color names to hex — extend as needed */
 function colorToHex(name) {
   const map = {
     brown: '#A2845E',
