@@ -37,12 +37,7 @@ export function CartProvider({ children }) {
 
   const goToCheckout = () => {
     if (cart?.checkoutUrl) {
-      // Replace myshopify domain with custom domain if needed
-      const url = cart.checkoutUrl.replace(
-        'stockbridge-6607.myshopify.com',
-        'stockbridge.us'
-      );
-      window.location.href = url;
+      window.location.href = cart.checkoutUrl;
     }
   };
 
