@@ -7,6 +7,8 @@ import './ShopPage.css';
 export default function ShopPage() {
   const [shopifyProducts, setShopifyProducts] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [sortBy, setSortBy] = useState('newest');
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,8 +34,33 @@ export default function ShopPage() {
         colors: p.options
           ?.find((opt) => opt.name.toLowerCase() === 'color')
           ?.values?.map((v) => ({ name: v, hex: colorToHex(v) })) || [],
+        productType: p.productType || '',
+        createdAt: p.createdAt || '',
       }))
     : products;
+
+  // Build filter options from product types
+  const productTypes = ['All', ...new Set(
+    displayProducts
+      .map((p) => p.productType)
+      .filter(Boolean)
+  )];
+
+  // Filter
+  let filtered = activeFilter === 'All'
+    ? displayProducts
+    : displayProducts.filter((p) => p.productType === activeFilter);
+
+  // Sort
+  if (sortBy === 'newest') {
+    filtered = [...filtered].sort((a, b) =>
+      new Date(b.createdAt) - new Date(a.createdAt)
+    );
+  } else if (sortBy === 'price-low') {
+    filtered = [...filtered].sort((a, b) => Number(a.price) - Number(b.price));
+  } else if (sortBy === 'price-high') {
+    filtered = [...filtered].sort((a, b) => Number(b.price) - Number(a.price));
+  }
 
   if (loading) {
     return (
@@ -45,8 +72,32 @@ export default function ShopPage() {
 
   return (
     <div className="shop-page">
+      {/* Filter + Sort Bar */}
+      <div className="shop-page__toolbar">
+        <div className="shop-page__filters">
+          {productTypes.map((type) => (
+            <button
+              key={type}
+              className={`shop-page__filter ${activeFilter === type ? 'is-active' : ''}`}
+              onClick={() => setActiveFilter(type)}
+            >
+              {type}
+            </button>
+          ))}
+        </div>
+        <select
+          className="shop-page__sort"
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
+          <option value="newest">Newest</option>
+          <option value="price-low">Price: Low → High</option>
+          <option value="price-high">Price: High → Low</option>
+        </select>
+      </div>
+
       <div className="shop-page__grid">
-        {displayProducts.map((product) => (
+        {filtered.map((product) => (
           <Link
             to={`/product/${product.slug}`}
             className="shop-page__card"
@@ -56,8 +107,15 @@ export default function ShopPage() {
               <img
                 src={product.images[0] || '/images/placeholder.svg'}
                 alt={product.name}
-                className="shop-page__image"
+                className="shop-page__image shop-page__image--primary"
               />
+              {product.images[1] && (
+                <img
+                  src={product.images[1]}
+                  alt={`${product.name} — alternate`}
+                  className="shop-page__image shop-page__image--hover"
+                />
+              )}
             </div>
             <div className="shop-page__info">
               <span className="shop-page__name">{product.name}</span>

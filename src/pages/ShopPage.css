@@ -15,6 +15,62 @@
   text-align: center;
 }
 
+/* ---- Toolbar ---- */
+
+.shop-page__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  gap: 16px;
+}
+
+.shop-page__filters {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.shop-page__filter {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid transparent;
+  padding: 6px 14px;
+  cursor: pointer;
+  color: var(--color-black);
+  opacity: 0.5;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.shop-page__filter:hover {
+  opacity: 0.8;
+}
+
+.shop-page__filter.is-active {
+  opacity: 1;
+  border-color: var(--color-black);
+}
+
+.shop-page__sort {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 6px 12px;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-black);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23000'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
 /* ---- Product Grid ---- */
 
 .shop-page__grid {
@@ -32,6 +88,7 @@
 }
 
 .shop-page__image-wrap {
+  position: relative;
   width: 100%;
   aspect-ratio: 417 / 625;
   background: #F5F0EB;
@@ -44,11 +101,24 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: opacity 0.35s ease;
 }
 
-.shop-page__card:hover .shop-page__image {
-  transform: scale(1.03);
+.shop-page__image--primary {
+  position: relative;
+  z-index: 1;
+}
+
+.shop-page__image--hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 1;
+}
+
+.shop-page__card:hover .shop-page__image--primary {
+  opacity: 0;
 }
 
 /* ---- Info Row ---- */
@@ -94,6 +164,12 @@
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
     padding-top: var(--space-sm);
+  }
+
+  .shop-page__toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 
   .shop-page__grid {

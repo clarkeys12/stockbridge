@@ -24,7 +24,7 @@ async function shopifyFetch(query, variables = {}) {
 
 export async function fetchAllProducts() {
   const query = `{
-    products(first: 50) {
+    products(first: 50, sortKey: CREATED_AT, reverse: true) {
       edges {
         node {
           id
@@ -32,6 +32,8 @@ export async function fetchAllProducts() {
           title
           description
           descriptionHtml
+          productType
+          createdAt
           images(first: 10) {
             edges {
               node {
