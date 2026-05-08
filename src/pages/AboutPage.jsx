@@ -7,17 +7,7 @@ export default function AboutPage() {
 
       <section className="content-page__section">
         <p className="content-page__text content-page__text--lead">
-          Stockbridge is a Brooklyn-based clothing label focused on
-          considered garments built for everyday wear.
-        </p>
-      </section>
-
-      <section className="content-page__section">
-        <p className="content-page__text">
-          Every piece is designed with intention — quality materials, honest
-          construction, and silhouettes that feel natural. We source fabrics
-          from mills in Japan, Portugal, and the United States, working with
-          small-batch manufacturers who share our commitment to craft.
+          Stockbridge sits where natural materials meet structured form, where the quiet of the outdoors finds its place in the city. Everything is designed, cut, and sewn in New York, using fabrics sourced with intention and often dyed by hand in small batches. These are clothes that reflect real life, where variation, wear, and imperfection are part of it. We’re not here to chase trends or over-design things. Just to make pieces that feel grounded, useful, and a little personal. Clothing that moves easily between the natural and the built world. Finding nature in the city.
         </p>
       </section>
 
@@ -30,7 +20,7 @@ export default function AboutPage() {
 
       <section className="content-page__section">
         <img
-          className="content-page__image"
+          className="content-page_image"
           src="/images/studio-chuck.jpg"
           alt="Stockbridge studio — Brooklyn, NY"
         />
